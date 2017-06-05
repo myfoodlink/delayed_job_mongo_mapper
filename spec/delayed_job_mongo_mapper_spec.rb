@@ -9,9 +9,7 @@ describe Delayed::Backend::MongoMapper::Job do
     end
     
     it "should disconnect" do
-      lambda do
-        Delayed::Backend::MongoMapper::Job.before_fork
-      end.should change { !!MongoMapper.connection.connected? }.from(true).to(false)
+      expect { Delayed::Backend::MongoMapper::Job.before_fork }.to change { !!MongoMapper.connection.connected? }.from(true).to(false)
     end
   end
 
@@ -21,9 +19,7 @@ describe Delayed::Backend::MongoMapper::Job do
     end
     
     it "should call reconnect" do
-      lambda do
-        Delayed::Backend::MongoMapper::Job.after_fork
-      end.should change { !!MongoMapper.connection.connected? }.from(false).to(true)
+      expect { Delayed::Backend::MongoMapper::Job.after_fork }.to change { !!MongoMapper.connection.connected? }.from(false).to(true)
     end
   end
 end

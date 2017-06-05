@@ -5,7 +5,6 @@ Gem::Specification.new do |s|
   s.summary           = "MongoMapper backend for delayed_job"
   s.version           = '1.0.9'
   s.authors           = ['Chris Gaffney', 'Brandon Keepers', 'Adnan Ali']
-  s.date              = Date.today.to_s
   s.email             = ['chris@collectiveidea.com', 'brandon@opensoul.com', 'adnan.ali@gmail.com']
   s.extra_rdoc_files  = ["LICENSE", "README.md"]
   s.files             = Dir.glob("{lib,spec}/**/*") + %w[LICENSE README.md]

@@ -77,7 +77,18 @@ module Delayed
 
         def reload(*args)
           reset
-          super
+
+          # Calling MongoMapper#reload breaks the DelayedJob specs.
+          # MongoMapper#reload removes all instance variables from the object when reloading.
+          # Mongoid does not do this.
+
+          # a DelayedJob spec is setting a value on an object, reloading and then checking the instance variable.
+          
+          if doc = collection.find_one(_id: id)
+            initialize_from_database(doc)
+          else
+            raise DocumentNotFound, "Document match #{_id.inspect} does not exist in #{collection.name} collection"
+          end
         end
       end
     end

@@ -15,7 +15,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency      'mongo_mapper', '>= 0.11.0'
   s.add_runtime_dependency      'delayed_job',  ['>= 3.0', '< 5']
-  s.add_runtime_dependency      'tzinfo',       '~> 0.3.31'
   s.add_development_dependency  'rspec',        '>= 3.0'
 end
 

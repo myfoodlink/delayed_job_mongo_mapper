@@ -1,12 +1,3 @@
-module Psych
-  module Visitors
-    class ToRuby
-      prepend ::PsychVisitorsDelayedJobMongoMapperExtensions
-    end
-  end
-end
-
-
 module PsychVisitorsDelayedJobMongoMapperExtensions
   def klass(object)
     return revive(Psych.load_tags[object.tag], object) if Psych.load_tags[object.tag]
@@ -22,6 +13,14 @@ module PsychVisitorsDelayedJobMongoMapperExtensions
       end
     else
       super(object)
+    end
+  end
+end
+
+module Psych
+  module Visitors
+    class ToRuby
+      prepend ::PsychVisitorsDelayedJobMongoMapperExtensions
     end
   end
 end

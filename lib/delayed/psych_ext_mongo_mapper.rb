@@ -1,7 +1,7 @@
 module Psych
   module Visitors
     class ToRuby
-      prepend PsychVisitorsDelayedJobMongoMapperExtensions
+      prepend ::PsychVisitorsDelayedJobMongoMapperExtensions
     end
   end
 end
